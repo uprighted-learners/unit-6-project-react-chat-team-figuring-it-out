@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import User from "./user.js";
+import rooms from "./rooms.js"
 
 
 const MessageSchema = new mongoose.Schema(

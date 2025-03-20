@@ -8,6 +8,7 @@
     "start": "node app.js",
     "dev": "nodemon"
   },
+  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",

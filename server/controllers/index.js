@@ -1,9 +1,7 @@
-// testing
+//! Importing all controllers into a single file 
+// import userController from "./users_controller"
+// import roomController from "./rooms_controller"
+// import messageController from "./messages_controller"
 
-// Hello from (Salome)
-
-
-
-console.log("hello")
-// function() {}
-
+//! Exporting all contollers for use in "app.js" file
+// export {userController, roomController, messageController}

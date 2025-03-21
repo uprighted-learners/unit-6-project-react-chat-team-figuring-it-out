@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import User from "./user.js";
-import rooms from "./rooms.js"
+import Rooms from "./rooms.js"
 
 
 const MessageSchema = new mongoose.Schema(
@@ -17,7 +17,7 @@ const MessageSchema = new mongoose.Schema(
         room: {
             type : mongoose.ObjectId,
             required: true,
-            ref: "Room"
+            ref: Rooms
         },
         body: {
             type : String,

@@ -16,8 +16,8 @@ const RoomsShema = new mongoose.Schema(
 
         },
         addedUsers: {
-            type: mongoose.ObjectId,
-            ref: "User"
+            type: [mongoose.ObjectId],
+            ref: User
 
         }
 

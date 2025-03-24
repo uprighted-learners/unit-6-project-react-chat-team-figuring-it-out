@@ -13,6 +13,7 @@ const MessageSchema = new mongoose.Schema(
         user: {
             type: mongoose.ObjectId,
             required : true,
+            ref: User //added to reference user
         },
         room: {
             type : mongoose.ObjectId,

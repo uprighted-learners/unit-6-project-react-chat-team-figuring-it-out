@@ -4,8 +4,8 @@ import express from "express"
 import mongoose from "mongoose"
 
 
-//! Importing Controllers
-// import { userController, roomController, messageController } from "./controllers/index.js"
+//? Importing Controllers
+import { userController, roomController, messageController } from "./controllers/index.js"
 
 
 //! Importing validate session middleware function
@@ -26,13 +26,13 @@ const db = mongoose.connection
 //! Middleware
 app.use(express.json())
 
-// app.use("/users", userController)
+app.use("/users", userController)
 
     //!Determine where to put validation middleware
     // app.use(validateSession)
 
-// app.use("/rooms", roomController)
-// app.use("/messages", messageController)
+app.use("/rooms", roomController)
+app.use("/messages", messageController)
 
 
 //? Confirming connections

@@ -1,14 +1,8 @@
-    /* Peer review: 
-    overall code is good...minor updates to get to clean it up
-    - do a CTRL+ALT+F to format your document as you go
-    - the "import bcrypt..." is missing, but using in line 22/59
-    - check for typo's to maintain name convention and consistencies. See line 20 compared to line 25 with "firstName"
-    - line 98 and 114 should be for update users and delete users per the "IceBox" guide
-    */
-
+   
     import express from "express";
-    import bcrypt from "bcrypt"
+    import bcrypt from "bcrypt";
     import User from "../models/user.js";
+    import jwt from "jsonwebtoken";
 
 
 
@@ -95,58 +89,27 @@
         }
     });
 
-    router.get("/one/:userdId", async (req, res) => {
-        try {
-            const user = await User.findById(req.params.userId);
-
-
-            res.status(200).json({
-                User: user,
-            });
-        } catch (err) {
-            res.status(500)({
-                Error: err.message,
-            });
-        }
-    });
-
-
-    router.get("/one/name/:userFirstName", async (req, res) => {
-        try {
-            const user = await User.find({
-                firstName: { $regex: req.params.userFinrstName, $options: "i" },
-            }).select({ firstName: 1, lastName: 1, email: 1 });
-
-            res.status(200).json({
-                User: user,
-            });
-        } catch (err) {
-            res.status(500).json({
-                Error: err.message,
-            });
-        }
-
-    });
-
-    router.delete("/delete/:userId", async (req, res) => {
-        try {
-            const deletedUser = await User.findByIdAndDelete(req.params.userId);
     
-            if (!deletedUser) {
-                return res.status(404).json({
-                    Error: "User not found",
-                });
-            }
+
+    // router.delete("/delete/:userId", async (req, res) => {
+    //     try {
+    //         const deletedUser = await User.findByIdAndDelete(req.params.userId);
     
-            res.status(200).json({
-                Msg: "User deleted successfully",
-            });
-        } catch (err) {
-            res.status(500).json({
-                Error: err.message,
-            });
-        }
-    });
+    //         if (!deletedUser) {
+    //             return res.status(404).json({
+    //                 Error: "User not found",
+    //             });
+    //         }
+    
+    //         res.status(200).json({
+    //             Msg: "User deleted successfully",
+    //         });
+    //     } catch (err) {
+    //         res.status(500).json({
+    //             Error: err.message,
+    //         });
+    //     }
+    // });
     
   
 

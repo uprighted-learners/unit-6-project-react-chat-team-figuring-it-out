@@ -6,11 +6,6 @@ overall code is good...minor updates to get to clean it up
 */
 
 import express from "express"
-
-// importing all controllers 
-import userCController from "./users_controllerusers_controller"
-import roomController from "./messages_controller"
-import messages_controller from "./messages_controller"
 import Room from "../models/rooms"
 
 
@@ -19,12 +14,12 @@ const router = express.Router();
 
 router.post("/create", async (req, res) => {
     try {
-        const { name, description } = req.body;
+        const { name, description, addedUsers} = req.body;
 
         const newRoom = new Room({
             name: name,
             description: description,
-            user_id: req.user_id,
+            addedUsers: addedUsers,
         });
 
         const room = await newRoom.save();
@@ -43,7 +38,7 @@ router.post("/create", async (req, res) => {
 router.get("/all", async (req, res) => {
     try {
         const rooms = await Room.find()
-            .populate("user_id", ["firstName", "lastName", "-_id"])
+            .populate("addedUsers")
             .select({ name: 1, description: 1, createId: 1 });
 
         res.status(200).json(rooms);

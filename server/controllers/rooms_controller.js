@@ -6,7 +6,11 @@ overall code is good...minor updates to get to clean it up
 */
 
 import express from "express"
-//import jwt from "jsonwebtoken"
+
+// importing all controllers 
+import userCController from "./users_controllerusers_controller"
+import roomController from "./messages_controller"
+import messages_controller from "./messages_controller"
 import Room from "../models/rooms"
 
 

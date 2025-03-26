@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import User from "./user.js";
 // import Message from "./message.js";
 
-const RoomsShema = new mongoose.Schema(
+const RoomsSchema = new mongoose.Schema(
     {
         name: {
             type: String,
@@ -27,4 +27,4 @@ const RoomsShema = new mongoose.Schema(
     }
 );
 
-export default mongoose.model("rooms", RoomsShema)
+export default mongoose.model("rooms", RoomsSchema)

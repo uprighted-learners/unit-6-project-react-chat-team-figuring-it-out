@@ -6,7 +6,7 @@ overall code is good...minor updates to get to clean it up
 */
 
 import express from "express"
-import Room from "../models/rooms"
+import Room from "../models/rooms.js"
 
 
 const router = express.Router();

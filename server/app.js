@@ -18,12 +18,12 @@ const app = express()
 
 
 //? MongoDB Connection
-const MONGODB = process.env.MONGO_DB_URI + "/" + process.env.MONGO_DB_NAME
+const MONGODB = process.env.MONGO_DB_URI + "/" + process.env.MONGO_DB_NAME + process.env.MONGO_DB_PARAMS
 mongoose.connect(MONGODB)
 const db = mongoose.connection
 
 
-//! Middleware
+//? Middleware
 app.use(express.json())
 
 app.use("/users", userController)

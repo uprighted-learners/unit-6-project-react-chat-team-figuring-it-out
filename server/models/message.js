@@ -8,7 +8,7 @@ const MessageSchema = new mongoose.Schema(
         when: {
             type : Date, 
             default : Date.now,
-            required: true,
+            // required: true,
         },
         user: {
             type: mongoose.ObjectId,

@@ -5,6 +5,7 @@ import express from "express"
 import Message from "../models/message.js"
 import User from "../models/user.js"
 import Room from "../models/rooms.js"
+import mongoose from "mongoose"
 
 //? Initializing Router for this controller
 const router = express.Router()
@@ -18,7 +19,7 @@ router.post("/create", async (req, res) => {
         if (!user || !room || !body) {
             throw new Error("User, room, and body are all required.");
         }
-        
+
         //validate that object is in database
         if (
             !mongoose.Types.ObjectId.isValid(user) ||
@@ -46,13 +47,15 @@ router.post("/create", async (req, res) => {
         })
 
         const newMessage = await message.save()
-        await newMessage.populate({
-            path: `user`,
-            select: `firstName lastName`
-        }).populate({
-            path: `room`,
-            select: `name`
-        })
+        await newMessage
+            .populate([{
+                path: `user`,
+                select: `firstName lastName`
+            }, {
+                path: `room`,
+                select: `name`
+            }])
+
 
         res.status(200).json({
             Created: newMessage

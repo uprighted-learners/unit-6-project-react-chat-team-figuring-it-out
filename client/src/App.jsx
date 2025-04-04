@@ -5,7 +5,7 @@ import Rooms from './components/RoomsFolder/Rooms'
 //import Auth from './components/Auth'
 
 function App() {
-  const [count, setCount] = useState(0)
+  
 
   return (
     <>

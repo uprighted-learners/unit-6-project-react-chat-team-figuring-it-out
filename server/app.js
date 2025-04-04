@@ -7,6 +7,9 @@ import mongoose from "mongoose"
 //? Importing Controllers
 import { userController, roomController, messageController } from "./controllers/index.js"
 
+//? importing cors
+import cors from "cors"
+
 
 //! Importing validate session middleware function
 // import validateSession from "./middleware/validate-session.js"
@@ -25,6 +28,9 @@ const db = mongoose.connection
 
 //? Middleware
 app.use(express.json())
+
+app.use(cors())
+
 
 app.use("/users", userController)
 

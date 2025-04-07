@@ -21,7 +21,7 @@ const Auth = ({ updateToken }) => {
 
     try {
       // Send a POST request to register the user
-      const response = await fetch(`http:"localhost:8080/users${signup ? "/signup" : "/login"}`,
+      const response = await fetch(`http:localhost:8080/users${signup ? "/signup" : "/login"}`,
                              
         {
           method: "POST", // HTTP method

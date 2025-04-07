@@ -2,7 +2,8 @@ import { useState } from 'react'
 import './App.css'
 import Rooms from './components/RoomsFolder/Rooms'
 //! Double check Auth here
-//import Auth from './components/Auth'
+import Auth from './components/Auth'
+ 
 
 function App() {
   
@@ -10,6 +11,7 @@ function App() {
   return (
     <>
       <Rooms/>
+      <Auth/>
     </>
   )
 }

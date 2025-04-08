@@ -20,6 +20,7 @@ const Rooms = () => {
       })
 
       const data = await response.json()
+      console.log(data);
 
       setRooms(data.Results);
 
@@ -27,7 +28,7 @@ const Rooms = () => {
     
   return <div>
     <p>Hello from Rooms</p>
-    {/* {rooms.map((room) => <>Room component</> )} */}
+    {rooms?.map((room) => <>Room component</> )}
     
     </div>
   

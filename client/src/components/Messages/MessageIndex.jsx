@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Messages from './Messages'
 
-const MessageIndex = () => {
+const MessageIndex = ({selectedRoom}) => {
     const [messages, setMessages] = useState([])
 
     // Loads up all messages upon initial page navigation
@@ -11,7 +11,7 @@ const MessageIndex = () => {
 
     const fetchMessages = async () => {
 
-        const response = await fetch("http://localhost:8080/messages/all", {
+        const response = await fetch(`http://localhost:8080/messages/all/${selectedRoom}`, {
             // Gathering all messages from the database
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`
@@ -30,7 +30,13 @@ const MessageIndex = () => {
 
     return <div>
         {/* Returns each message within the array */}
-        {messages.map( (message) => <>Messages are here</> )}
+        {/* <h1>message1</h1> */}
+        {/* {messages.map( (message) => <>Messages are here</> )} */}
+
+        <Messages fetchMessages={fetchMessages} />
+
+        {/* Returns each message within the array */}
+        {messages.map((message) => <Messages key={message._id} message={message} fetchMessages={fetchMessages} />).reverse()}
 
     </div>
 

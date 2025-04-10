@@ -3,10 +3,13 @@ import './App.css'
 import { Routes, Route, Navigate } from "react-router-dom"
 import Rooms from './components/RoomsFolder/Rooms'
 import Auth from './components/Auth'
+import MessageIndex from './components/Messages/MessageIndex'
 //add messages
 
 function App() {
   const [token, setToken] = useState("")
+  const [selectedRoom, setSelectedRoom]= useState()
+  
 
   //Update state token variable, and store it in localStorage
   const updateToken = (passedToken, uid) => {
@@ -15,18 +18,18 @@ function App() {
     setToken(passedToken);
   };
   //logout handler
-    const handleLogout = () => {
-      localStorage.removeItem("token")
-      localStorage.removeItem("uid")
-      setToken("")
+  const handleLogout = () => {
+    localStorage.removeItem("token")
+    localStorage.removeItem("uid")
+    setToken("")
+  }
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem("token")
+    if (storedToken) {
+      setToken(storedToken)
     }
-  
-    useEffect(() => {
-      const storedToken = localStorage.getItem("token")
-      if (storedToken) {
-        setToken(storedToken)
-      }
-    }, [])
+  }, [])
 
   return (
     <>
@@ -41,12 +44,16 @@ function App() {
         />
 
         <Route path="/rooms"
-          element={token ? <Rooms /> : <Navigate to="/" />} />
+          element={token ? <Rooms setSelectedRoom={setSelectedRoom} /> : <Navigate to="/" />} />
 
-
+        {/* path of messages */}
+        <Route
+          path="/messages/:id"
+          element={<MessageIndex selectedRoom={selectedRoom}/>}
+        />
       </Routes>
     </>
-  
+
   )
 }
 

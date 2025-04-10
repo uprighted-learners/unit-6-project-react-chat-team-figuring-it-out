@@ -12,7 +12,7 @@ import cors from "cors"
 
 
 //! Importing validate session middleware function
-// import validateSession from "./middleware/validate-session.js"
+import validateSession from "./middleware/validate-session.js"
 
 
 //? Initializing
@@ -34,18 +34,18 @@ app.use(cors())
 
 app.use("/users", userController)
 
-    //!Determine where to put validation middleware
-    // app.use(validateSession)
+//!Determine where to put validation middleware
+app.use(validateSession)
 
 app.use("/rooms", roomController)
 app.use("/messages", messageController)
 
 
 //? Confirming connections
-db.once("open", () =>{
+db.once("open", () => {
     console.log(`Connection successful to Database: ${process.env.MONGO_DB_NAME}`)
 })
 
-app.listen(process.env.PORT, ()=>{
+app.listen(process.env.PORT, () => {
     console.log(`Server running on: ${process.env.PORT}`)
 })

@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken"
 import User from "../models/user.js"
 
-const validateSession = async (requestAnimationFrame, resizeBy, next) => {
+const validateSession = async (req, res, next) => {
     try {
         const auth = req.headers.authorization
         if (!auth) throw new Error("Unauthorized")

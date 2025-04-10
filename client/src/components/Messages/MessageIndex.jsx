@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Messages from './Messages'
+import CreateMessage from './CreateMessage'
 
 const MessageIndex = () => {
     const [messages, setMessages] = useState([])
@@ -20,7 +21,7 @@ const MessageIndex = () => {
 
         // stores data gathered in a variable for displaying in JSON format
         const data = await response.json()
-        console.log(data)
+        console.log(data.Results)
 
         // sets all retrieved messages to the useMessages state variable
         setMessages(data.Results)
@@ -29,8 +30,11 @@ const MessageIndex = () => {
 
 
     return <div>
+        {/* Rendering Message Component */}
+        <Messages fetchMessages={fetchMessages} />
+
         {/* Returns each message within the array */}
-        {messages.map( (message) => <>Messages are here</> )}
+        {messages.map((message) => <Message key={message._id} message={message} fetchMessages={fetchMessages} />).reverse()}
 
     </div>
 

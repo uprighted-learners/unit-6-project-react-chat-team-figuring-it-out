@@ -12,7 +12,7 @@ import cors from "cors"
 
 
 //! Importing validate session middleware function
-// import validateSession from "./middleware/validate-session.js"
+import validateSession from "./middleware/validate-session.js"
 
 
 //? Initializing
@@ -34,8 +34,7 @@ app.use(cors())
 
 app.use("/users", userController)
 
-    //!Determine where to put validation middleware
-    // app.use(validateSession)
+app.use(validateSession)
 
 app.use("/rooms", roomController)
 app.use("/messages", messageController)

@@ -97,6 +97,35 @@ router.get("/all", async (req, res) => {
     }
 })
 
+//? return ALL messages for specific room ID
+router.get("/all/:roomID", async (req, res) => {
+    try {
+        let allMessages = await Message.find({room:req.params.roomID})
+            .populate(
+                "user", "firstName lastName")
+            .populate(
+                "room", "name")
+            .select({
+                room: 1,
+                body: 1,
+                createdAt: 1,
+                updatedAt: 1
+            })
+
+        if (!allMessages || allMessages.length === 0) {
+            throw new Error("No messages found")
+        }
+
+        res.status(200).json({
+            Results: allMessages
+        })
+    } catch (err) {
+        res.status(500).json({
+            Error: err.message
+        })
+    }
+})
+
 
 //? update a specific message
 router.patch("/update/:messageId", async (req, res) => {

@@ -11,26 +11,6 @@ const Room = ({room, setSelectedRoom}) => {
 
   }, [])
 
-
-  // const fetchMessages = async () => {
-  //   try{
-
-  //     //!check the fetch 
-  //     const response = await fetch(`https://localhost:8080/messages/all`, {
-  //       headers: {
-  //         Authorization: `Bearer ${localStorage.getItem("token")}`
-  //       }
-  //     })
-      
-  //     const data = await response.json()
-
-    
-
-
-  //   }catch (err){
-  //     console.log(err);
-  //   }
-  // }
     
   return (
     <div>

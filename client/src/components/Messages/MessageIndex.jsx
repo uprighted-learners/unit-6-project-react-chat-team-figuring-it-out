@@ -21,7 +21,7 @@ const MessageIndex = ({selectedRoom}) => {
 
         // stores data gathered in a variable for displaying in JSON format
         const data = await response.json()
-        console.log(data.Results)
+        console.log(data)
 
         // sets all retrieved messages to the useMessages state variable
         setMessages(data.Results)

@@ -17,7 +17,7 @@ const Room = ({room, setSelectedRoom}) => {
       <h1>{room.name}</h1>
 
     <button onClick={() => {
-      setSelectedRoom(room._id)
+      setSelectedRoom(room)
       navigate(`/messages/${room._id}`)
       }}>Click here to go to Messages 📨</button>
 

@@ -1,7 +1,7 @@
 import React from 'react'
 
 //using props from MessageIndex file
-const Messages = ({ message, fetchMessages }) => {
+const Message = ({ message, fetchMessages }) => {
   // logs the message
   console.log({ message })
 
@@ -31,12 +31,12 @@ const Messages = ({ message, fetchMessages }) => {
 
   return (
     <div>
-      <h5> {message.user_id.firstName} {message.User_id.lastName} </h5>
+      <h5> {message.user.firstName} {message.user.lastName} </h5>
       {/* <h5> {message.user?.firstName} {message.user?.lastName} </h5> */}
       <h4> {new Date(message.createdAt).toLocaleString()} </h4>
-      <p> {message.text} </p>
+      <p> {message.body} </p>
 
-      {message.User_id._id === localStorage.getItem("uid") && (
+      {message.user._id === localStorage.getItem("uid") && (
         <button style={{
           position: "absolute",
           top: 0,
@@ -51,4 +51,4 @@ const Messages = ({ message, fetchMessages }) => {
   )
 }
 
-export default Messages
+export default Message

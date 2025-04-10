@@ -49,7 +49,7 @@ const Auth = ({ updateToken }) => {
 
       // Update the token with the value received in the response
 
-      updateToken(data.Token, data.user._id);
+      updateToken(data.Token, data.User._id);
 
 
       navigate("/rooms")

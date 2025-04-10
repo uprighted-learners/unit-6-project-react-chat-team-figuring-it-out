@@ -8,8 +8,8 @@ import MessageIndex from './components/Messages/MessageIndex'
 
 function App() {
   const [token, setToken] = useState("")
-  const [selectedRoom, setSelectedRoom]= useState()
-  
+  const [selectedRoom, setSelectedRoom] = useState()
+
 
   //Update state token variable, and store it in localStorage
   const updateToken = (passedToken, uid) => {
@@ -50,20 +50,16 @@ function App() {
             )}
         />
 
+        <Route path="/rooms"
+          element={token ? <Rooms setSelectedRoom={setSelectedRoom} /> : <Navigate to="/" />} />
+
 
 
         {/* path of messages */}
         <Route
-          path="/rooms"
-          element={token ? <Rooms /> : <Navigate to="/" />}
+          path="/messages/:id"
+          element={<MessageIndex selectedRoom={selectedRoom} />}
         />
-
-        {/* <Route
-          path="/messages"
-          element={<MessageIndex />}
-        /> */} 
-
-
       </Routes>
     </>
 

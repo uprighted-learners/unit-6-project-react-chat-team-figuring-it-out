@@ -34,7 +34,7 @@ const MessageIndex = () => {
         <Messages fetchMessages={fetchMessages} />
 
         {/* Returns each message within the array */}
-        {messages.map((message) => <Message key={message._id} message={message} fetchMessages={fetchMessages} />).reverse()}
+        {messages.map((message) => <Messages key={message._id} message={message} fetchMessages={fetchMessages} />).reverse()}
 
     </div>
 

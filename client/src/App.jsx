@@ -53,10 +53,10 @@ function App() {
           element={token ? <Rooms /> : <Navigate to="/" />}
         />
 
-        {/* <Route
-          path="/messages"
+        <Route
+          path="/messages/:id"
           element={<MessageIndex />}
-        /> */} 
+        />
 
 
       </Routes>

@@ -1,9 +1,7 @@
-import React from 'react'
-import { useState } from 'react'
-// import Room from './'
-import { useEffect } from 'react'
+import React, { useState, useEffect} from 'react'
+import Room from './Room';
 
-const Rooms = () => {
+const Rooms = ({setSelectedRoom}) => {
     const[rooms, setRooms] = useState([])
 
     useEffect(() => {
@@ -22,13 +20,14 @@ const Rooms = () => {
       const data = await response.json()
       console.log(data);
 
-      setRooms(data.Results);
+      setRooms(data);
 
     };
     
   return <div>
-    <p>Hello from Rooms</p>
-    {rooms?.map((room) => <>Room component</> )}
+    <p></p>
+    {/* check for the key */}
+    {rooms.map((room) => <Room key={room._id} room={room} fetchRooms={fetchRooms} setSelectedRoom={setSelectedRoom}/> )}
     
     </div>
   

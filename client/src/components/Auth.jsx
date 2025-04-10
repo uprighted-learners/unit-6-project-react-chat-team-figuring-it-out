@@ -48,7 +48,9 @@ const Auth = ({ updateToken }) => {
       console.log(data); // Log the response from the API
 
       // Update the token with the value received in the response
-      updateToken(data.Token,); // Deleted the data.user._id
+
+      updateToken(data.Token, data.user._id);
+
 
       navigate("/rooms")
 

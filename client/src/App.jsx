@@ -33,18 +33,24 @@ function App() {
 
   return (
     <>
-      {token && <button style={{ position: "absolute", top: 0, left: 0 }} onClick={handleLogout}>Logout</button>}
+      {token && (<button
+        style={{ position: "absolute", top: 0, left: 0 }}
+        onClick={handleLogout}>
+        Logout
+      </button>)}
+
       <Routes>
-        <Route path="/"
+        <Route
+          path="/"
           element={
-            !token ?
+            !token ? (
               <Auth updateToken={updateToken} />
-              : (<Navigate to="/rooms" />)
-          }
+            ) : (
+              <Navigate to="/rooms" />
+            )}
         />
 
-        <Route path="/rooms"
-          element={token ? <Rooms setSelectedRoom={setSelectedRoom} /> : <Navigate to="/" />} />
+
 
         {/* path of messages */}
         <Route

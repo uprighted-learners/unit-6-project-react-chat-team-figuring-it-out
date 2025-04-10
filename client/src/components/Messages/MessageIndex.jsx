@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Messages from './Messages'
+import CreateMessage from './CreateMessage'
 
 const MessageIndex = ({selectedRoom}) => {
     const [messages, setMessages] = useState([])
@@ -20,7 +21,7 @@ const MessageIndex = ({selectedRoom}) => {
 
         // stores data gathered in a variable for displaying in JSON format
         const data = await response.json()
-        console.log(data)
+        console.log(data.Results)
 
         // sets all retrieved messages to the useMessages state variable
         setMessages(data.Results)
@@ -29,7 +30,9 @@ const MessageIndex = ({selectedRoom}) => {
 
 
     return <div>
-        {/* Returns each message within the array */}
+        {/* Rendering Message Component */}
+     
+
         {/* <h1>message1</h1> */}
         {/* {messages.map( (message) => <>Messages are here</> )} */}
 
@@ -37,6 +40,7 @@ const MessageIndex = ({selectedRoom}) => {
 
         {/* Returns each message within the array */}
         {messages.map((message) => <Messages key={message._id} message={message} fetchMessages={fetchMessages} />).reverse()}
+
 
     </div>
 

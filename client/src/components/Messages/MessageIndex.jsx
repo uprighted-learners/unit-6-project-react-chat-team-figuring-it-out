@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Message from './Message'
 import CreateMessage from './CreateMessage'
+import "./MessageIndex.css"
 
 const MessageIndex = ({ selectedRoom }) => {
     const [messages, setMessages] = useState([])

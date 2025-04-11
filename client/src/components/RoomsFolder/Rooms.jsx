@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from 'react'
 import Room from './Room';
+import "./Rooms.css"
 
 const Rooms = ({setSelectedRoom}) => {
     const[rooms, setRooms] = useState([])

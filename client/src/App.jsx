@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import { Routes, Route, Navigate } from "react-router-dom"
 import Rooms from './components/RoomsFolder/Rooms'
-import Auth from './components/Auth'
+import Auth from './components/Auth/Auth'
 import MessageIndex from './components/Messages/MessageIndex'
 //add messages
 

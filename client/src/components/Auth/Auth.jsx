@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Auth.css"
 
 // The Auth component handles user signup and login
 const Auth = ({ updateToken }) => {

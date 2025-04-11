@@ -1,4 +1,5 @@
 import React from 'react'
+import "./Messages.css"
 
 //using props from MessageIndex file
 const Message = ({ message, fetchMessages }) => {

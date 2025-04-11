@@ -4,11 +4,3 @@
   padding: 2rem;
   text-align: center;
 }
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-  min-width: 13em;
-  max-width: 13em;
-}

@@ -26,7 +26,7 @@ const Rooms = ({setSelectedRoom}) => {
     };
     
   return <div>
-    <p></p>
+    <p>Rooms</p>
     {/* check for the key */}
     {rooms.map((room) => <Room key={room._id} room={room} fetchRooms={fetchRooms} setSelectedRoom={setSelectedRoom}/> )}
     

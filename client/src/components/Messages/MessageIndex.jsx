@@ -39,11 +39,11 @@ const MessageIndex = ({ selectedRoom }) => {
 
     return <div>
         {/* Rendering Message Component */}
-        <h1> {selectedRoom.name} </h1>
+        <h1 > {selectedRoom.name} </h1>
         {/* <h2> {messages} </h2> */}
         {/* Returns each message within the array */}
         {/* {messages.map((message) => <Messages key={message._id} message={message} fetchMessages={fetchMessages} />).reverse()} */}
-        {messages.length > 0 ? messages.map((message) => <Message message={message} />) : <h1>No messages!</h1> }
+        {messages.length > 0 ? messages.map((message) => <Message key={message.text} message={message} />) : <h1>No messages!</h1> }
 
     </div>
 

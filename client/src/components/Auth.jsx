@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import "./Styles/Auth.css";
 // The Auth component handles user signup and login
 const Auth = ({ updateToken }) => {
   // The "signup" state determines whether the form is in signup (true) or login (false) mode
@@ -56,34 +56,35 @@ const Auth = ({ updateToken }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      {" "}
-      {/* When the form is submitted, call handleSubmit */}
-      <h2>{signup ? "Signup" : "Login"}</h2>{" "}
-      {/* Display "Signup" or "Login" based on the signup state */}
-      {signup && (
-        <>
-          {/* First Name and input LiastName*/}
-          
-           <input ref={firstNameRef} placeholder="First Name" required />{" "} 
-          <input ref={lastNameRef} placeholder="Last Name" required />{" "}
-        </>
-      )}
-      {/* input email / input password / submit button  */}
-      <input ref={emailRef} placeholder="Email" required />
-      <input ref={passwordRef} placeholder="Password" required />{" "}
-      <button>Submit</button> {/* Submit button */}
-      <button
-        type="button"
-        onClick={() => {
-          // When clicked, toggle the "signup" state to switch between signup and login
-          setSignup(!signup);
-        }}
-      >
-        {/* Button text changes based on the "signup" state */}
-        {signup ? "Need to login?" : "Need to signup?"}
-      </button>
-    </form>
+    <div className="form-container">
+      <form onSubmit={handleSubmit}>
+        {" "}
+        {/* When the form is submitted, call handleSubmit */}
+        <h2>{signup ? "Signup" : "Login"}</h2>{" "}
+        {/* Display "Signup" or "Login" based on the signup state */}
+        {signup && (
+          <>
+            {/* First Name and input LiastName*/}
+            <input ref={firstNameRef} placeholder="First Name" required />{" "}
+            <input ref={lastNameRef} placeholder="Last Name" required />{" "}
+          </>
+        )}
+        {/* input email / input password / submit button  */}
+        <input ref={emailRef} placeholder="Email" required />
+        <input ref={passwordRef} placeholder="Password" required />{" "}
+        <button>Submit</button> {/* Submit button */}
+        <button
+          type="button"
+          onClick={() => {
+            // When clicked, toggle the "signup" state to switch between signup and login
+            setSignup(!signup);
+          }}
+        >
+          {/* Button text changes based on the "signup" state */}
+          {signup ? "Need to login?" : "Need to signup?"}
+        </button>
+      </form>
+    </div>
   );
 };
 

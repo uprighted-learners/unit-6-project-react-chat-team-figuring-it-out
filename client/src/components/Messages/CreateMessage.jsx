@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 
-const CreateMessage = () => {
+const CreateMessage = ( {fetchMessages, selectedRoom, userId} ) => {
   const textInputRef = useRef()
 
   const handleSubmit = async (e) => {
@@ -13,7 +13,9 @@ const CreateMessage = () => {
           Authorization: `Bearer ${localStorage.getItem("token")}`
         },
         body: JSON.stringify({
-          text: textInputRef.current.value
+          user: userId,
+          room: selectedRoom._id,
+          body: textInputRef.current.value
         })
       })
 
@@ -29,9 +31,9 @@ const CreateMessage = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input ref={textInputRef} required placeholder='text' />
-      <button>Create</button>
+    <form className="messages" onSubmit={handleSubmit}>
+      <input className="createMessageInput" ref={textInputRef} type="text" maxLength="150" required placeholder='Add a message...' />
+      <button className="button" >Create</button>
     </form>
   )
 }

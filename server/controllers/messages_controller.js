@@ -157,13 +157,13 @@ router.patch("/update/:messageId", async (req, res) => {
 //? delete a specific message
 router.delete("/delete/:messageId", async (req, res) => {
     try {
-        const { user } = req.body
+        // const { user } = req.body
 
         let deleteMessage = await Message.findOneAndDelete({
             _id: req.params.messageId,
-            user: user
+            
         })
-
+        
         if (!deleteMessage) throw new Error("Cannot delete message")
 
         res.status(200).json({

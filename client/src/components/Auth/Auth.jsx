@@ -58,9 +58,9 @@ const Auth = ({ updateToken }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      {" "}
+      
       {/* When the form is submitted, call handleSubmit */}
-      <h2>{signup ? "Signup" : "Login"}</h2>{" "}
+      <h2>{signup ? "Signup" : "Login"}</h2>
       {/* Display "Signup" or "Login" based on the signup state */}
       {signup && (
         <>

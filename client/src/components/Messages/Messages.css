@@ -1,0 +1,21 @@
+.messages {
+    display: flex;
+    flex-direction: column;
+    background-color: darkolivegreen;
+    border: .5em solid gray;
+    padding: .1em 2em .1em 2em;
+    margin: 2em 10em 2em 10em;
+    border-radius: 2em;
+    max-width: 40em;
+}
+
+h5,
+h4 {
+    color: darkorange;
+
+}
+
+h4 {
+    font-size: small;
+
+}

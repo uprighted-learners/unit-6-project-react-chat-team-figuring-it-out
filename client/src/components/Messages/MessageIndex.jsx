@@ -40,7 +40,7 @@ const MessageIndex = ({ selectedRoom }) => {
     return <div>
         {/* Rendering Message Component */}
         <h1 > {selectedRoom.name} </h1>
-    
+        <CreateMessage selectedRoom={selectedRoom} userId={localStorage.getItem("uid")} fetchMessages={fetchMessages} />
         {/* Returns each message within the array */}
         {messages.length > 0 ? messages.map((message) => <Message key={message._id} message={message} fetchMessages={fetchMessages} />).reverse(0) : <h1>No messages!</h1> }
 

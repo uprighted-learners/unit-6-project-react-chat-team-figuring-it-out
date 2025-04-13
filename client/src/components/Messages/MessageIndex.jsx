@@ -3,13 +3,19 @@ import Message from './Message'
 import CreateMessage from './CreateMessage'
 import "./MessageIndex.css"
 
-const MessageIndex = ({ selectedRoom }) => {
+const MessageIndex = (props) => {
+    const [selectedRoom, setSelectedRoom] = useState(() => {
+        const storedRoom = localStorage.getItem("selectedRoom");
+        return storedRoom ? JSON.parse(storedRoom) : null;
+    })
     const [messages, setMessages] = useState([])
 
     // Loads up all messages upon initial page navigation
     useEffect(() => {
-        fetchMessages()
-    }, [])
+        if (selectedRoom) {
+            fetchMessages()
+        }
+    }, [selectedRoom])
 
     const fetchMessages = async () => {
         try {
@@ -25,11 +31,11 @@ const MessageIndex = ({ selectedRoom }) => {
             console.log(data)
 
 
-            if (data.Error) {
+            if (data.Error && !data.Results) {
                 throw new Error(data.Error)
             }
             // sets all retrieved messages to the useMessages state variable
-            setMessages(data.Results)
+            setMessages(data.Results || [])
 
         } catch (error) {
             console.log(error)
@@ -38,11 +44,30 @@ const MessageIndex = ({ selectedRoom }) => {
 
 
     return <div>
-        {/* Rendering Message Component */}
-        <h1 > {selectedRoom.name} </h1>
-        <CreateMessage selectedRoom={selectedRoom} userId={localStorage.getItem("uid")} fetchMessages={fetchMessages} />
-        {/* Returns each message within the array */}
-        {messages.length > 0 ? messages.map((message) => <Message key={message._id} message={message} fetchMessages={fetchMessages} />).reverse(0) : <h1>No messages!</h1> }
+
+        {selectedRoom ? (
+            <>
+                <h1>{selectedRoom.name}</h1>
+
+                {/* Create Message Form */}
+                <CreateMessage
+                    selectedRoom={selectedRoom}
+                    userId={localStorage.getItem("uid")}
+                    fetchMessages={fetchMessages}
+                />
+
+                {messages.length > 0 ? (
+                    messages.map((message) => (
+                        <Message key={message._id} message={message} fetchMessages={fetchMessages} />
+                    )).reverse()
+                ) : (
+                    <h2>No messages yet</h2>
+                )}
+            </>
+        ) : (
+            <h2>Room not selected</h2>
+        )}
+
 
     </div>
 

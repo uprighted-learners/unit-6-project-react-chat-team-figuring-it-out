@@ -33,7 +33,7 @@ const CreateMessage = ( {fetchMessages, selectedRoom, userId} ) => {
   return (
     <form className="messages" onSubmit={handleSubmit}>
       <input className="createMessageInput" ref={textInputRef} type="text" maxLength="150" required placeholder='Add a message...' />
-      <button className="button" >Create</button>
+      <button className="button" >📨 Create 📨</button>
     </form>
   )
 }

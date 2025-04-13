@@ -14,7 +14,7 @@ const router = express.Router();
 
 router.post("/create", async (req, res) => {
     try {
-        const { name, description, addedUsers} = req.body;
+        const { name, description, addedUsers } = req.body;
 
         const newRoom = new Room({
             name: name,
@@ -35,6 +35,33 @@ router.post("/create", async (req, res) => {
         });
     }
 });
+
+router.patch("/join/:roomId", async (req, res) => {
+    try {
+        const { userId } = req.body;
+
+        const updatedRoom = await Room.findByIdAndUpdate(
+            req.params.roomId,
+            { $addToSet: { addedUsers: userId } }, // prevents duplicates
+            { new: true }
+        ).populate("addedUsers");
+
+        if (!updatedRoom) {
+            throw new Error("Room not found.");
+        }
+
+        res.status(200).json({
+            Msg: "User successfully added to the room.",
+            Room: updatedRoom
+        });
+
+    } catch (err) {
+        res.status(500).json({
+            Error: err.message
+        });
+    }
+});
+
 router.get("/all", async (req, res) => {
     try {
         const rooms = await Room.find()

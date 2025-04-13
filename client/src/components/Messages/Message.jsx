@@ -40,7 +40,7 @@ const Message = ({ message, fetchMessages }) => {
   }
 
   return (
-    <div className='messages'>
+    <div className='messages' style={{ position: "relative" }}>
       <h5> {message.user?.firstName} {message.user?.lastName} </h5>
       {/* <h5> {message.user?.firstName} {message.user?.lastName} </h5> */}
       <p> {message.body}
@@ -51,9 +51,9 @@ const Message = ({ message, fetchMessages }) => {
       {/* Allowing user to delete a message if the user ID belongs to the user */}
       {message.user?._id === localStorage.getItem("uid") && (
         <button style={{
-          position: "relative",
-          top: 0,
-          right: 0,
+          position: "absolute",
+          top: 10,
+          right: 10,
           padding: ".1em",
           borderRadius: "50%",
           fontSize: ".6em",

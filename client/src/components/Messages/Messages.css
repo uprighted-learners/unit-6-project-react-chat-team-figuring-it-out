@@ -4,7 +4,7 @@
     background-color: darkolivegreen;
     border: .5em solid gray;
     padding: .1em 2em .1em 2em;
-    margin: 2em 10em 2em 10em;
+    margin: 2em 10em 1em 10em;
     border-radius: 2em;
     max-width: 40em;
 }
@@ -24,6 +24,12 @@ h4 {
     height: 5em;
     text-align: left;
     margin: .5em;
+}
+
+p{
+    white-space: normal;
+    overflow-wrap: break-word;
+    margin: 0;
 }
 
 .button {

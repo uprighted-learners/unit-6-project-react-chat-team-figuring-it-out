@@ -18,6 +18,7 @@ const Message = ({ message, fetchMessages }) => {
       })
 
       const data = await response.json()
+      console.log(data)
 
       if (data.Deleted) {
         fetchMessages()
@@ -26,23 +27,26 @@ const Message = ({ message, fetchMessages }) => {
       }
 
     } catch (error) {
-      console.log(err)
+      console.log(error)
     }
   }
 
   return (
-    <div>
+    <div className='messages'>
       <h5> {message.user.firstName} {message.user.lastName} </h5>
       {/* <h5> {message.user?.firstName} {message.user?.lastName} </h5> */}
+      <p> {message.body}
+        {/* Allowing user to delete a message if the user ID belongs to the user */}
+      </p>
       <h4> {new Date(message.createdAt).toLocaleString()} </h4>
-      <p> {message.body} </p>
 
+      {/* Allowing user to delete a message if the user ID belongs to the user */}
       {message.user._id === localStorage.getItem("uid") && (
         <button style={{
           position: "absolute",
           top: 0,
           right: 0,
-          padding: ".6em",
+          padding: ".1em",
           borderRadius: "50%",
           fontSize: ".6em",
         }} onClick={() => handleDelete(message._id)}>❌</button>

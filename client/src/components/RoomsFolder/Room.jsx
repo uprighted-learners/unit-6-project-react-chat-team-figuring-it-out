@@ -38,7 +38,7 @@ const Room = ({ room, setSelectedRoom, fetchRooms }) => {
 
   return (
     <div>
-      <h1>{room.name}</h1>
+      <h3>{room.name}</h3>
 
       {room.addedUsers && room.addedUsers.some(user => user._id === userId) ? (
         <button id="messages" onClick={() => {

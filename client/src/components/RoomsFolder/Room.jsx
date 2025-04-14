@@ -41,12 +41,12 @@ const Room = ({ room, setSelectedRoom, fetchRooms }) => {
       <h1>{room.name}</h1>
 
       {room.addedUsers && room.addedUsers.some(user => user._id === userId) ? (
-        <button onClick={() => {
+        <button id="messages" onClick={() => {
           setSelectedRoom(room)
           localStorage.setItem("selectedRoom", JSON.stringify(room))
           navigate(`/messages/${room._id}`)
-        }}>Click here to go to Messages 📬</button>) : (
-        <button onClick={handleJoinRoom}>
+        }}>Messages📬</button>) : (
+        <button id="selected-room" onClick={handleJoinRoom}>
           Join Room ➕
         </button>
       )}

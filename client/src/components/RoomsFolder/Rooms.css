@@ -1,11 +1,18 @@
 p{
     text-align: center;
+    background-color: rgb(0, 128, 96);
 }
 
 h1{
     text-align: center;
+    background-color: rgb(0,13,100);
 }
 
-/* button{
-
-} */
+#messages{
+    /* position: absolute; */
+        top: 0;
+        right: 0;
+        padding: .6em;
+        border-Radius: 50%;
+        font-Size: .6em
+}
